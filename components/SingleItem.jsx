@@ -276,7 +276,7 @@ const SingleItem = ({
                     className={`h-10 absolute bg-blue-500 rounded-full`}
                     style={{
                       width: daysDifference * 80,
-                      marginLeft: -(daysDifference * 79) + 44,
+                      marginLeft: -(daysDifference * 79) + 40,
                     }}
                   >
                     <div className="flex items-center h-full">
