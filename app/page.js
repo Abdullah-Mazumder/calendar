@@ -286,10 +286,7 @@ export default function Home() {
                   Prev
                 </button>
                 <div className="text-lg font-semibold">
-                  {currentDate?.toLocaleString(undefined, {
-                    year: "numeric",
-                    month: "long",
-                  })}
+                  {moment(currentDate).format("MMMM YYYY")}
                 </div>
                 <button
                   className="text-sm font-semibold bg-teal-600 text-gray-200 px-4 py-1 rounded-md"

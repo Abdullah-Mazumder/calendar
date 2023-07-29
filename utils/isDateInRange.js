@@ -1,22 +1,21 @@
+import moment from "moment";
+
 export default function isDateInRange(today, arriveDate, departDate) {
-  // Parse date strings as YYYY-MM-DD format
-  const todayDate = new Date(today);
-  const arriveDateObj = new Date(arriveDate);
-  const departDateObj = new Date(departDate);
+  // Parse date strings as Moment objects
+  const todayDate = moment(today);
+  const arriveDateObj = moment(arriveDate);
+  const departDateObj = moment(departDate);
 
   // Set time to the start of the day (midnight)
-  todayDate.setHours(0, 0, 0, 0);
-  arriveDateObj.setHours(0, 0, 0, 0);
-  departDateObj.setHours(0, 0, 0, 0);
+  todayDate.startOf("day");
+  arriveDateObj.startOf("day");
+  departDateObj.startOf("day");
 
-  if (todayDate.getTime() === arriveDateObj.getTime()) {
+  if (todayDate.isSame(arriveDateObj, "day")) {
     return -1;
-  } else if (todayDate.getTime() === departDateObj.getTime()) {
+  } else if (todayDate.isSame(departDateObj, "day")) {
     return 1;
-  } else if (
-    todayDate.getTime() > arriveDateObj.getTime() &&
-    todayDate.getTime() < departDateObj.getTime()
-  ) {
+  } else if (todayDate.isBetween(arriveDateObj, departDateObj, "day", "[]")) {
     return 0;
   } else {
     // If today is outside the range, return null or any other value as per your requirement.

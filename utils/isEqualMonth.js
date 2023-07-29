@@ -1,11 +1,10 @@
+import moment from "moment";
+
 export default function isEqualMonth(date1, date2) {
-  const d1 = new Date(date1);
-  const d2 = new Date(date2);
+  // Parse the dates as Moment objects
+  const d1 = moment(date1);
+  const d2 = moment(date2);
 
-  const month1 = d1.getMonth();
-
-  const month2 = d2.getMonth();
-
-  // Compare year, month, and day
-  return month1 === month2;
+  // Compare the month
+  return d1.isSame(d2, "month");
 }
